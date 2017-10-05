@@ -60,7 +60,7 @@ def validate():
         
      #rendering form with error messages   
     if not username_error and not password_error and not verify_password_error:
-        return '<h1>Welcome</h1>'
+        return redirect('/valid-inputs')
     elif not username_error and password_error and not verify_password_error:
         return signup_form.format(username=username, username_error="",password="",password_error=password_error,verify_password="",verify_password_error="")
     elif not username_error and not password_error and verify_password_error:
@@ -74,6 +74,8 @@ def validate():
     elif username_error and password_error and verify_password_error:
          return signup_form.format(username="", username_error=username_error,password="",password_error=password_error,verify_password="",verify_password_error=verify_password_error)
 
-
+@app.route('/valid-inputs')
+def valid_inputs():
+    return '<h1>WELCOME</h1>'
 
 app.run()
